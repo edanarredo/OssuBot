@@ -9,20 +9,20 @@
  * @type {import('../../typings').LegacyCommand}
  */
  module.exports = {
-	name: "temperature",
+	name: "temp",
 	// Refer to typings.d.ts for available properties.
 
 	execute(message, args) {
 
       const inputTemperature = args[0];
       const temperatureValue = parseInt(inputTemperature, 10);
-      const temperatureType = inputTemperature.match(/[a-zA-Z]/)[0].toLowerCase();
+      const temperatureType = inputTemperature.match(/[a-zA-Z]/)[0].toUpperCase();
       let goodInput = true;
       let otherTemperature = "";
 
-      if (temperatureType == "f") 
+      if (temperatureType == "F") 
          otherTemperature = `${Math.floor((temperatureValue - 32) * .5556)}° C`;
-      else if (temperatureType == "c") 
+      else if (temperatureType == "C") 
          otherTemperature = `${Math.floor((temperatureValue * 1.8) + 32)}° F`;
       else 
          goodInput = false;
