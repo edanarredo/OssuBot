@@ -1,5 +1,5 @@
 /**
- * @file Sample ping command
+ * @file Play command
  * @author Naman Vrati
  * @since 1.0.0
  * @version 3.2.2
@@ -8,11 +8,16 @@
 /**
  * @type {import('../../typings').LegacyCommand}
  */
+
+ const { Collection, ChannelType, Client } = require("discord.js");
+
  module.exports = {
-	name: "ping",
+	name: "play",
 	// Refer to typings.d.ts for available properties.
 
 	execute(message, args) {
-		message.channel.send({ content: "Pong." });
+
+		const member = message.member;
+		console.log(member);
 	},
 };
