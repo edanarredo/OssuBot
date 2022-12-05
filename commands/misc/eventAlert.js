@@ -1,18 +1,33 @@
-/**
- * @file event_alert command
- * @author Naman Vrati
- * @since 1.0.0
- * @version 3.2.2
- */
-
-/**
- * @type {import('../../typings').LegacyCommand}
- */
- module.exports = {
-	name: "event_alert",
-	// Refer to typings.d.ts for available properties.
+module.exports = {
+	name: "ev",
 
 	execute(message, args) {
-		message.channel.send({ content: "Pong." });
+
+		// Get the event that's closest to starting
+		let closestEvent = message.guild.scheduledEvents.fetch()
+			.then(result => { return result.last() });
+
+		// Fetch users subscribed to event
+		closestEvent
+			.then((result) => { 
+				message.channel.send({ content: `${result}` })
+				result.fetchSubscribers()
+				.then((result) => { 
+					let messageContent = "Heads up that this event is starting soon! ";
+					result.forEach(item => messageContent += `<@${item.user.id}> `);
+					console.log(messageContent);
+					message.channel.send({content: `${messageContent}`});
+				})
+			});
+
+
+		// Send Event
+		// closestEvent.then((result) => {
+		// 	message.channel.send({ 
+		// 		content: `${result}\n(ping people here)` 
+		// 	});
+		// 	console.log(result);
+		// });
+
 	},
 };
