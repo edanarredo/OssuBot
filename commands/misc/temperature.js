@@ -1,36 +1,34 @@
-/**
- * @file Sample ping command
- * @author Naman Vrati
- * @since 1.0.0
- * @version 3.2.2
- */
+// @Author Mip
 
-/**
- * @type {import('../../typings').LegacyCommand}
- */
- module.exports = {
-	name: "temp",
-	// Refer to typings.d.ts for available properties.
+module.exports = {
+   name: "temp",
 
-	execute(message, args) {
+   execute(message, args) {
 
+      // Get values and setup variables.
       const inputTemperature = args[0];
       const temperatureValue = parseInt(inputTemperature, 10);
-      const temperatureType = inputTemperature.match(/[a-zA-Z]/)[0].toUpperCase();
-      let goodInput = true;
-      let otherTemperature = "";
+      const temperatureType = (inputTemperature.match(/[a-zA-Z]/g) ?? ["INVALID"])[0].toUpperCase();
+      let otherTemperature
 
-      if (temperatureType == "F") 
+      // Input validation
+      if (temperatureType.length != 1 || isNaN(temperatureValue)) {
+         askForBetterInput();
+         return;
+      }
+
+      // Convert temperatures
+      if (temperatureType == "F")
          otherTemperature = `${Math.floor((temperatureValue - 32) * .5556)}° C`;
-      else if (temperatureType == "C") 
+      else if (temperatureType == "C")
          otherTemperature = `${Math.floor((temperatureValue * 1.8) + 32)}° F`;
-      else 
-         goodInput = false;
-      
 
-      if (!goodInput)
-         message.channel.send({ content: `I don't understand :joy:\nMake sure the temperature is formatted like these: 10C, 10F`});
-      else
-         message.channel.send({ content: `${temperatureValue}° ${temperatureType} is ${otherTemperature}` });
-	},
+      // Send message.
+      message.channel.send({ content: `${temperatureValue}° ${temperatureType} is ${otherTemperature}` });
+
+      // Helper function
+      function askForBetterInput() {
+         message.channel.send({ content: `I don't understand :joy:\nMake sure the temperature is formatted like these: 10C, 10F` });
+      }
+   },
 };
