@@ -1,3 +1,5 @@
+// Author @Mip
+
 module.exports = {
 	name: "ev",
 
@@ -19,15 +21,5 @@ module.exports = {
 					message.channel.send({content: `${messageContent}`});
 				})
 			});
-
-
-		// Send Event
-		// closestEvent.then((result) => {
-		// 	message.channel.send({ 
-		// 		content: `${result}\n(ping people here)` 
-		// 	});
-		// 	console.log(result);
-		// });
-
 	},
 };
