@@ -1,17 +1,7 @@
-/**
- * @file print rules
- * @author Mip
- * @since 1.0.0
- * @version 3.2.2
- */
-
-/**
- * @type {import('../../typings').LegacyCommand}
- */
+// @Author Mip
 
 module.exports = {
 	name: "info",
-	// Refer to typings.d.ts for available properties.
 
 	execute(message, args) {
 		message.channel.send({ 
