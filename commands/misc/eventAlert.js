@@ -15,7 +15,7 @@ module.exports = {
 				message.channel.send({ content: `${result}` })
 				result.fetchSubscribers()
 				.then((result) => { 
-					let messageContent = "Heads up that this event is starting soon! ";
+					let messageContent = "Friendly reminder that this is the next event coming up! See y'all there ";
 					result.forEach(item => messageContent += `<@${item.user.id}> `);
 					console.log(messageContent);
 					message.channel.send({content: `${messageContent}`});
