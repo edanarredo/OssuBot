@@ -27,7 +27,6 @@ module.exports = {
       message.guild.emojis.create({ attachment: imageUrl, name: emoteName })
          .then(emoji => message.channel.send({ content: `Created new emoji with name ${emoji.name}!`}))
          .catch(console.error);
-
    },
 };
 
