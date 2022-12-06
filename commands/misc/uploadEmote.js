@@ -23,14 +23,8 @@ module.exports = {
       const imageUrlParts = imageUrl.split("/");
       const imageType = imageUrlParts[imageUrlParts.length - 1];
 
-      // If wrong filetype convert to jpg or png.
-      // if (imageType != ".jpg" || imageType != ".png") {
-      //    // Use online converter or something.
-      // }
-
-      // Upload image as emoji. This is not working
-      // Documentation - https://discord.js.org/#/docs/main/stable/class/GuildEmojiManager?scrollTo=create
-      message.guild.emojis.create(imageUrl, emoteName)
+      // Create emoji
+      message.guild.emojis.create({ attachment: imageUrl, name: emoteName })
          .then(emoji => message.channel.send({ content: `Created new emoji with name ${emoji.name}!`}))
          .catch(console.error);
 
