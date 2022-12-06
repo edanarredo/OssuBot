@@ -17,20 +17,22 @@ module.exports = {
          return;
       }
 
-      // Split link by slashes into list to get file type.
-      const imageUrlParts = message.attachments.first().url.split("/");
+      // Split image url by slashes into list to get file type.
+      const emoteName = args[0];
+      const imageUrl = message.attachments.first().url;
+      const imageUrlParts = imageUrl.split("/");
       const imageType = imageUrlParts[imageUrlParts.length - 1];
 
-      // Check filetype. 
-      if (imageType != ".jpg" || imageType != ".png") {
-         // Use online converter or something.
-      } 
-   
+      // If wrong filetype convert to jpg or png.
+      // if (imageType != ".jpg" || imageType != ".png") {
+      //    // Use online converter or something.
+      // }
 
-      // Upload image as emoji.
-
-      // Send results (success/fail)
-      message.channel.send({ content: `ok.` });
+      // Upload image as emoji. This is not working
+      // Documentation - https://discord.js.org/#/docs/main/stable/class/GuildEmojiManager?scrollTo=create
+      message.guild.emojis.create(imageUrl, emoteName)
+         .then(emoji => message.channel.send({ content: `Created new emoji with name ${emoji.name}!`}))
+         .catch(console.error);
 
    },
 };
