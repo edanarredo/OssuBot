@@ -20,12 +20,16 @@ module.exports = {
       // Split image url by slashes into list to get file type.
       const emoteName = args[0];
       const imageUrl = message.attachments.first().url;
-      const imageUrlParts = imageUrl.split("/");
-      const imageType = imageUrlParts[imageUrlParts.length - 1];
+
+      // Validate emote name (no special chars, letters and _ only)
+      if (!/^\w+$/.test(emoteName)) {
+         message.channel.send({ content: `Please use a name with` });
+         return;
+      }
 
       // Create emoji
       message.guild.emojis.create({ attachment: imageUrl, name: emoteName })
-         .then(emoji => message.channel.send({ content: `Created new emoji with name ${emoji.name}!`}))
+         .then(emoji => message.channel.send({ content: `Created new emoji with name ${emoji.name}!` }))
          .catch(console.error);
    },
 };
