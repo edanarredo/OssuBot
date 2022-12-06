@@ -22,8 +22,8 @@ module.exports = {
       const imageUrl = message.attachments.first().url;
 
       // Validate emote name (no special chars, letters and _ only)
-      if (!/^\w+$/.test(emoteName)) {
-         message.channel.send({ content: `Please use a name with` });
+      if (!/^\w+$/.test(emoteName) || !emoteName) {
+         message.channel.send({ content: `Please choose an emote name with only letters, numbers, or underscores (_)` });
          return;
       }
 
