@@ -17,7 +17,6 @@ module.exports = {
 				.then((result) => { 
 					let messageContent = "Friendly reminder that this is the next event coming up! See y'all there ";
 					result.forEach(item => messageContent += `<@${item.user.id}> `);
-					console.log(messageContent);
 					message.channel.send({content: `${messageContent}`});
 				})
 			});
