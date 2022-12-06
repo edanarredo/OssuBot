@@ -9,7 +9,7 @@ module.exports = {
       const inputTemperature = args[0];
       const temperatureValue = parseInt(inputTemperature, 10);
       const temperatureType = (inputTemperature.match(/[a-zA-Z]/g) ?? ["INVALID"])[0].toUpperCase();
-      let otherTemperature
+      let otherTemperature;
 
       // Input validation
       if (temperatureType.length != 1 || isNaN(temperatureValue)) {
