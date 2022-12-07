@@ -17,7 +17,7 @@ module.exports = {
          return;
       }
 
-      // Split image url by slashes into list to get file type.
+      // Save new emote name and image url
       const emoteName = args[0];
       const imageUrl = message.attachments.first().url;
 
