@@ -22,6 +22,8 @@ module.exports = {
          otherTemperature = `${Math.floor((temperatureValue - 32) * .5556)}° C`;
       else if (temperatureType == "C")
          otherTemperature = `${Math.floor((temperatureValue * 1.8) + 32)}° F`;
+      else if (temperatureType == "K")
+         otherTemperature = `${Math.floor((temperatureValue - 273.15))}° C and ${Math.floor((1.8*(temperatureValue - 273) + 32))}° F`
 
       // Send message.
       message.channel.send({ content: `${temperatureValue}° ${temperatureType} is ${otherTemperature}` });
