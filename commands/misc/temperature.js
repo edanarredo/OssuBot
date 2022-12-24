@@ -30,7 +30,11 @@ module.exports = {
 
       // Helper function
       function askForBetterInput() {
-         message.channel.send({ content: `I don't understand :joy:\nMake sure the temperature is formatted like these: 10C, 10F` });
+
+         if (temperatureValue == "yourmom")
+            message.channel.send({ content: `:weary::hot_face::weary::hot_face:` });
+         else 
+            message.channel.send({ content: `I don't understand :joy:\nMake sure the temperature is formatted like these: 10C, 10F` });
       }
    },
 };
