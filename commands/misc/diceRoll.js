@@ -10,7 +10,7 @@ module.exports = {
       
       // Output
       if (!Number.isInteger(diceSize)) {
-         message.channel.send({ content: `No decimals or letters please :(`});
+         message.channel.send({ content: `Please enter a number that will be the dice size after !random. No decimals or letters please :(`});
       } else {
          const roll = Math.floor(Math.random() * (diceSize - 1 + 1) + 1)
          message.channel.send({ content: `You rolled a ${roll}!`});
