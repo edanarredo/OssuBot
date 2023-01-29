@@ -8,6 +8,8 @@ module.exports = {
 
    execute(message, args) {
 
+      desiredPowerState = args[0];
+
       // Input validation
       if (desiredPowerState != "on" || desiredPowerState != "off") {
          askForBetterInput();
@@ -21,7 +23,7 @@ module.exports = {
       // Make api request.
 
       console.log(desiredPowerState);
-      
+
       const options = {
          hostname: 'https://my.pliant.io',
          path: `/a/ossu/prod/powerValheimServer?api_key=${pliant_api_key}`,
@@ -44,7 +46,7 @@ module.exports = {
    
       // Helper function
       function askForBetterInput() {
-         message.channel.send({ content: `I don't understand :joy:\nThe server can only be on or off.` });
-      }
+         message.channel.send({ content: `I don't understand :joy:\nThe server can only be on or off dumbass.` });
+      };
    },
 };
